@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: biblatex.bst
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: main-blx.bib
+Database file #2: ./AuxFiles/ProjectBib.bib
+Warning--I didn't find a database entry for "Razavi2000"
+Biblatex version: 3.21
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+You've used 10 entries,
+            6402 wiz_defined-function locations,
+            1259 strings with 10382 characters,
+and the built_in function-call counts, 36710 in all, are:
+= -- 2266
+> -- 725
+< -- 154
++ -- 859
+- -- 321
+* -- 2234
+:= -- 3785
+add.period$ -- 0
+call.type$ -- 10
+change.case$ -- 63
+chr.to.int$ -- 42
+cite$ -- 18
+duplicate$ -- 4326
+empty$ -- 3596
+format.name$ -- 396
+if$ -- 7702
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 0
+newline$ -- 203
+num.names$ -- 342
+pop$ -- 3061
+preamble$ -- 1
+purify$ -- 90
+quote$ -- 0
+skip$ -- 1192
+stack$ -- 0
+substring$ -- 3141
+swap$ -- 943
+text.length$ -- 182
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 328
+warning$ -- 0
+while$ -- 517
+width$ -- 0
+write$ -- 194
+(There was 1 warning)

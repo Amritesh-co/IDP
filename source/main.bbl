@@ -1,0 +1,211 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global/global}
+  \entry{Kamilia2025}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=KM}{%
+         family={Kamilia},
+         familyi={K\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KM+1}
+    \strng{fullhash}{KM+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Modification of Chitosan-Coated Magnetic Material for
+  Enhanced Adsorption Performance}
+    \field{journaltitle}{Journal of Environmental Chemical Engineering}
+    \field{year}{2025}
+  \endentry
+
+  \entry{Budeli2025}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=BP}{%
+         family={Budeli},
+         familyi={B\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BP+1}
+    \strng{fullhash}{BP+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fluoride Removal Using Ce/Al/Fe Tri-Metal Oxide Modified
+  Diatomaceous Earth}
+    \field{journaltitle}{Water Research}
+    \field{year}{2025}
+  \endentry
+
+  \entry{Ayalew2023}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=AT}{%
+         family={Ayalew},
+         familyi={A\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AT1}
+    \strng{fullhash}{AT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fluoride Adsorption Using Thermally Activated Kaolin Clay and
+  Limestone}
+    \field{journaltitle}{Environmental Technology \& Innovation}
+    \field{year}{2023}
+  \endentry
+
+  \entry{Gogoi2019}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=GS}{%
+         family={Gogoi},
+         familyi={G\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GS+1}
+    \strng{fullhash}{GS+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{PEI--GTMAC Functionalized Biomass Adsorbents for Enhanced
+  Anion Removal}
+    \field{journaltitle}{Bioresource Technology}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Chen2014}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=CL}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CL+1}
+    \strng{fullhash}{CL+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{GTMAC Quaternization of Chitosan in Ionic Liquid for Improved
+  Adsorption}
+    \field{journaltitle}{Carbohydrate Polymers}
+    \field{year}{2014}
+  \endentry
+
+  \entry{Mohan2007}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=MD}{%
+         family={Mohan},
+         familyi={M\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MD+1}
+    \strng{fullhash}{MD+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fluoride Removal from Water Using Activated Alumina}
+    \field{journaltitle}{Journal of Hazardous Materials}
+    \field{year}{2007}
+  \endentry
+
+  \entry{Mukherjee2023}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=MS}{%
+         family={Mukherjee},
+         familyi={M\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MS+1}
+    \strng{fullhash}{MS+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{18}
+    \field{pages}{16753\bibrangedash 16764}
+    \field{title}{Insight into Biosorptive Uptake of Fluoride by Chemically
+  Activated Biochar: Experimental Modeling and Parametric Optimization}
+    \field{volume}{13}
+    \field{journaltitle}{Biomass Conversion and Biorefinery}
+    \field{year}{2023}
+  \endentry
+
+  \entry{Chauhan2024}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=CS}{%
+         family={Chauhan},
+         familyi={C\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CS+1}
+    \strng{fullhash}{CS+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Synthesis and Investigation of GTMAC Modified Biomass
+  Adsorbents for Anionic Pollutant Removal}
+    \field{journaltitle}{Biomass Conversion and Biorefinery}
+    \field{year}{2024}
+  \endentry
+
+  \entry{Hussain2024}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{1}{}{%
+      {{hash=HA}{%
+         family={Hussain},
+         familyi={H\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HA+1}
+    \strng{fullhash}{HA+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{117952}
+    \field{title}{A Sustainable Approach for Fluoride Treatment Using Coconut
+  Fiber Cellulose as an Adsorbent}
+    \field{volume}{244}
+    \field{journaltitle}{Environmental Research}
+    \field{year}{2024}
+  \endentry
+\enddatalist
+\endinput
