@@ -86,7 +86,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%
-\usepackage[backend=bibtex,style=ieee]{biblatex}
+\usepackage[backend=bibtex,style=ieee,sorting=ydnt]{biblatex}
 % If backend is set to bibtex, then configure texmaker Bi(La)Tex with "bibtex %"
 \addbibresource{./AuxFiles/ProjectBib.bib}%Add bib file with extention
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,11 +95,14 @@
 %% Use it only after Biblatex
 %% Uncomment the following lines for watermarking and run it more than 2 times for proper alignment
 \usepackage{background}
-\backgroundsetup{scale=1, angle=0, firstpage = false, opacity=0.5, contents={
-\begin{tikzpicture}[remember picture, overlay]
-\node at ([yshift=0pt, xshift=0pt]current page.center){\includegraphics[width=0.6\textwidth]{Figures/RVlogoVecW}};
-\end{tikzpicture}
-}}
+\backgroundsetup{
+scale=1,
+angle=0,
+firstpage=false,
+opacity=0.5,
+position=current page.center,
+contents={\includegraphics[width=0.6\textwidth]{Figures/RVlogoVecW}}
+}
 
 \begin{document}
 \NoBgThispage% Don't remove this command, even if you want logo on the first page.	
@@ -143,6 +146,7 @@
 	\listoftables	
 \end{spacing}
 
+\glsaddall
 \printglossary[type=\acronymtype, title= Abbreviations, toctitle=Abbreviations]
 
 \printglossary[type=symbolList, title= List of Symbols, toctitle=List of Symbols]
@@ -164,10 +168,13 @@
 \input{./Chapter4/chapter4-implement}
 
 %Chapter 5
-\input{./Chapter5/chapter5-result}
+\input{./Chapter5/chapter5-model}
 
 %Chapter 6
-\input{./Chapter6/chapter6-conclution}
+\input{./Chapter6/chapter6-result}
+
+%Chapter 7
+\input{./Chapter7/chapter7-conclution}
 
 %% Uncomment the following 2 commands to add Appendix chapters
 \appendix
@@ -178,6 +185,7 @@
 \else
 \clearpage
 \addcontentsline{toc}{chapter}{Bibliography}
+\nocite{*}
 \printbibliography%
 \fi
 \end{spacing}

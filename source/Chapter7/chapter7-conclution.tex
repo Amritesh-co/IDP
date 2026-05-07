@@ -1,0 +1,28 @@
+\chapter{Conclusion and Future Scope}
+Development of low-cost and efficient adsorbents for fluoride removal is important for water treatment applications. In the present work, coconut fiber was selected as a biomass adsorbent and surface modification using Glycidyl Trimethyl Ammonium Chloride (GTMAC) was carried out to improve adsorption characteristics. DOE using Central Composite Design (CCD) was used for planning adsorption studies, and preliminary Langmuir adsorption model diagnostics were analyzed during Phase 2 of the work. This chapter presents the conclusions, future scope, and learning outcomes of the project. 
+
+\section{Conclusion}
+The present work focused on the preparation and GTMAC functionalization of coconut fiber for fluoride adsorption studies, coupled with advanced computational modelling. Biomaterial preparation was carried out through drying, grinding, and sieving processes to obtain uniform particle size suitable for adsorption studies. 
+
+CCD experimental runs were generated using Design-Expert software by varying pH, adsorbent dose, fluoride concentration, and contact time. In the computational phase, a 500-point Latin Hypercube Sampling (LHS) design was used to simulate adsorption responses. The baseline Langmuir model showed good prediction performance with an $R^2$ value of 0.8158 and RMSE value of 0.5278 mg/g, confirming that fundamental chemistry captures the majority of the variance. 
+
+However, rigorous residual analysis revealed systematic, non-linear error patterns driven predominantly by pH (specifically underestimation at the optimal pH of 6.5--7). Through strategic feature engineering, 28 new features were developed, successfully demonstrating that these physical model residuals are learnable using machine learning techniques. Ultimately, the study establishes a strong foundation for a hybrid physics-ML modelling approach for environmental remediation.
+
+\section{Future Scope}
+Future work includes:
+\begin{itemize}
+    \item Carrying out complete batch adsorption studies and fluoride removal experiments using the prepared GTMAC-modified coconut fiber to generate real-world experimental validation data.
+    \item Performing SEM and FTIR analysis to study surface morphology and confirm successful GTMAC functionalization.
+    \item Executing Phase 4 of the computational workflow to train and tune advanced ML models (Random Forest, XGBoost, MLP) to correct the Langmuir residuals, with the target of achieving a hybrid model $R^2 \geq 0.94$.
+    \item Validating the hybrid model on complex, multi-ion real groundwater samples.
+\end{itemize}
+
+\section{Learning Outcomes of the Project}
+\begin{itemize}
+\item Knowledge of GTMAC surface functionalization and biomaterial preparation.  
+\item Understanding of Design of Experiments (DOE), CCD, and Latin Hypercube Sampling (LHS).  
+\item Proficiency in Langmuir adsorption modelling and rigorous residual diagnostics.  
+\item Development of skills in feature engineering and hybrid physics-informed machine learning architectures.
+\item Exposure to FTIR and SEM characterization techniques.   
+\item Understanding of adsorption data analysis using both statistical software and Python-based ML pipelines.
+\end{itemize}

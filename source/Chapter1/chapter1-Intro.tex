@@ -49,6 +49,58 @@ The schematic illustrates the overall approach adopted for fluoride removal from
  study focuses on developing a GTMAC-modified coconut fibre adsorbent, optimizing process 
  parameters using Central Composite Design (\gls{ccd}), and integrating Langmuir--Machine Learning 
  modelling for improved fluoride adsorption prediction and optimization \cite{Hussain2024}.
+
+ \subsection[Hybrid Langmuir--Machine Learning Modelling]{\textbf{Hybrid Langmuir--Machine Learning Modelling}}
+
+ The integration of physics-based isotherm models with data-driven machine learning
+ techniques has emerged as a powerful strategy for improving adsorption prediction
+ accuracy beyond what either approach can achieve independently. The Langmuir isotherm
+ provides a thermodynamically grounded description of monolayer adsorption on homogeneous
+ sites, expressed through the equilibrium adsorption capacity $q_e$ and the Langmuir
+ constant $K_L$. However, in practice, real adsorption systems exhibit nonlinear
+ interactions, heterogeneous surface effects, and parameter correlations that the
+ Langmuir model alone cannot capture, leading to systematic prediction residuals.
+
+ Hybrid modelling frameworks that couple mechanistic models with machine learning have
+ been reported across several adsorption and separation contexts. The core idea is to
+ use the physics-based model to generate a baseline prediction and then train a
+ machine learning algorithm to predict the residual error between the Langmuir
+ prediction and the observed data. This residual correction strategy---sometimes
+ called \emph{grey-box} or \emph{physics-informed machine learning}---allows the
+ combined model to inherit the interpretability and extrapolation properties of the
+ mechanistic model while exploiting the flexibility of data-driven methods to learn
+ systematic deviations.
+
+ Several ensemble and neural network architectures have been evaluated for such
+ residual correction tasks. Random Forest (\gls{rf}) regressors exploit bootstrap
+ aggregation and feature importance ranking to capture variable interactions without
+ over-fitting to small datasets. Extreme Gradient Boosting (\gls{xgb}) offers
+ superior handling of sparse feature spaces through sequential tree construction with
+ regularization, making it well-suited to adsorption datasets with correlated input
+ variables such as pH, dose, initial concentration, contact time, and temperature.
+ Multilayer Perceptron (\gls{mlp}) neural networks add the capacity to approximate
+ arbitrary continuous functions, providing a complementary data-driven component when
+ residual patterns are smooth and systematic.
+
+ In the context of fluoride adsorption, Latin Hypercube Sampling (\gls{lhs}) has been
+ proposed as an efficient design strategy for generating training datasets that span
+ the full multi-dimensional factor space, reducing the number of simulations required
+ compared to full-factorial designs while maintaining good space-filling properties.
+ The hybrid workflow adopted in the present study follows this paradigm: Langmuir
+ isotherm parameters are first estimated from experimental \gls{ccd} data, synthetic
+ training points are generated via \gls{lhs} over the ten-dimensional factor space,
+ Langmuir predictions are computed for each point, and the resulting residuals
+ $\varepsilon = q_{\text{exp}} - q_{\text{Langmuir}}$ serve as the regression target
+ for the machine learning models. The final hybrid prediction is:
+ \begin{equation}
+     q_{\text{hybrid}} = q_{\text{Langmuir}} + \hat{\varepsilon}_{\text{ML}}
+ \end{equation}
+ where $\hat{\varepsilon}_{\text{ML}}$ is the residual predicted by the trained
+ machine learning model. This formulation ensures that the hybrid model reduces to
+ the Langmuir baseline when the machine learning correction is negligible, preserving
+ physical interpretability. The approach is consistent with the broader trend in
+ environmental engineering of combining first-principles knowledge with data-driven
+ flexibility to achieve robust, generalizable predictions \cite{Hiremath2024}.
  
 %\subsection{Sample}
 %The main types of literature reviews are: evaluative, exploratory, and instrumental. A fourth type, the systematic review, is often classified separately, but is essentially a literature review focused on a research question, trying to identify, appraise, select and synthesize all high-quality research evidence and arguments relevant to that question. A meta-analysis is typically a systematic review using statistical methods to effectively combine the data used on all selected studies to produce a more reliable result.

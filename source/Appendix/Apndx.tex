@@ -1,5 +1,7 @@
-\chapter{Code}
-\section{First Appendix}
+\colorlet{BLACK}{black}
+\chapter{\textcolor{black}{Computational Workflow Scripts and Data Structures}}
+
+\section{First Appendix (Tcl Example)}
 You can use \texttt{tcblisting} for creating the code snippets. The following example illustrates how one can customize the \texttt{tcblisting} to achieve the \texttt{tcl} script. Similarly, one can use it for other programming language listing, including HDL.
 
 \begin{tcblisting}{listing only,colback=gray!10!white, breakable, boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
@@ -32,3 +34,143 @@ set_load 0.1 [all_outputs]
 set_max_fanout 1 [all_inputs]
 set_fanout_load 8 [all_outputs]      
 \end{tcblisting}
+
+This appendix also provides pseudocode snippets and data structure examples representing the hybrid Langmuir--Machine Learning computational modelling workflow developed in Python.
+
+\section{Phase 1: Design of Experiments and Simulation}
+The following pseudocode illustrates the generation of the Latin Hypercube Sampling (LHS) matrix and the physics-based simulation of fluoride adsorption.
+
+\begin{tcblisting}{listing only,colback=gray!10!white, breakable, boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
+listing options={
+language=Python,
+basicstyle=\small\ttfamily, 
+breaklines=true,
+keywordstyle=\color{blue}, 
+commentstyle=\color{gray},
+backgroundcolor=\color{gray!10},
+escapechar=!}}
+import pandas as pd
+from scipy.stats import qmc
+import numpy as np
+
+# 1. Generate Latin Hypercube Sampling (LHS) Design
+sampler = qmc.LatinHypercube(d=10, seed=42)
+sample = sampler.random(n=500)
+# Scale to factor ranges (e.g., pH: 3-9, Dose: 0.5-5)
+factors = scale_to_ranges(sample) 
+
+# 2. Physics-Based Simulation
+def simulate_adsorption(row):
+    # Langmuir baseline capacity
+    q_langmuir = q_max * KL * row['C0'] / (1 + KL * row['C0'])
+    
+    # pH effect (Gaussian bell curve centered at 6.5)
+    pH_effect = np.exp(-((row['pH'] - 6.5)**2) / 4.5)
+    
+    # Kinetics, Ion Competition & Fouling penalties
+    kinetics = 1 - np.exp(-k * row['Dose'] * row['Time'])
+    ion_penalty = calculate_ion_competition(row['Chloride'], 
+                                            row['Hardness'], 
+                                            row['Carbonate'])
+    fouling = 1 - (0.15 * row['NOM'] / 50)
+    
+    # Final response with 5% Gaussian noise
+    q_rem = q_langmuir * pH_effect * kinetics * (1-ion_penalty) * fouling
+    return q_rem + np.random.normal(0, 0.05 * q_rem)
+
+df = pd.DataFrame(factors, columns=factor_names)
+df['q_removal'] = df.apply(simulate_adsorption, axis=1)
+df.to_csv('dataset_simulated_500.csv')
+\end{tcblisting}
+
+\section{Phase 2: Langmuir Baseline Model Fitting}
+This snippet demonstrates the fitting of the 66-feature polynomial Langmuir baseline model and the calculation of residuals.
+
+\begin{tcblisting}{listing only,colback=gray!10!white, breakable, boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
+listing options={
+language=Python,
+basicstyle=\small\ttfamily, 
+breaklines=true,
+keywordstyle=\color{blue}, 
+commentstyle=\color{gray},
+backgroundcolor=\color{gray!10},
+escapechar=!}}
+from sklearn.preprocessing import PolynomialFeatures, StandardScaler
+from sklearn.linear_model import LinearRegression
+
+# Load dataset
+df = pd.read_csv('dataset_simulated_500.csv')
+X = df[factor_names]
+y_actual = df['q_removal']
+
+# Generate 66 features (linear, squared, interactions)
+poly = PolynomialFeatures(degree=2, include_bias=False)
+X_poly = poly.fit_transform(X)
+
+# Standardize and fit Ordinary Least Squares (OLS)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_poly)
+
+model = LinearRegression()
+model.fit(X_scaled, y_actual)
+
+# Calculate predictions and residuals
+df['q_predicted'] = model.predict(X_scaled)
+df['residual'] = df['q_removal'] - df['q_predicted']
+
+df.to_csv('langmuir_predictions.csv')
+\end{tcblisting}
+
+\section{Phase 3: Feature Engineering and ML Preparation}
+This section illustrates the extraction of engineered features targeted at the non-linear pH residual patterns.
+
+\begin{tcblisting}{listing only,colback=gray!10!white, breakable, boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
+listing options={
+language=Python,
+basicstyle=\small\ttfamily, 
+breaklines=true,
+keywordstyle=\color{blue}, 
+commentstyle=\color{gray},
+backgroundcolor=\color{gray!10},
+escapechar=!}}
+# Feature engineering targeting the Langmuir residual patterns
+def engineer_features(df):
+    # pH Deviation Features
+    df['pH_abs_dev'] = abs(df['pH'] - 6.5)
+    df['pH_dev_sq'] = (df['pH'] - 6.5)**2
+    df['pH_optimal'] = df['pH'].apply(lambda x: 1 if 6 <= x <= 7 else 0)
+    
+    # Ratios and Interactions
+    df['C0_Dose_ratio'] = df['C0'] / df['Dose']
+    df['total_ions'] = df['Chloride'] + (df['Hardness']/10) + \
+                       df['Carbonate']
+    df['carbonate_at_pH'] = df['Carbonate'] * (df['pH'] - 6.5)
+    
+    # Logarithmic transformations
+    df['log_Time'] = np.log(df['Time'])
+    
+    return df
+
+ml_data = engineer_features(df)
+# Split into training (80%) and test (20%) datasets
+ml_data.to_csv('ml_training_data.csv')
+\end{tcblisting}
+
+\section{Data File Structures (CSV Snippets)}
+
+\textbf{1. dataset\_simulated\_500.csv (Sample Data)}
+\begin{verbatim}
+Run, pH, C0_mgL, Time_min, Dose_gL, Temp_C, ..., q_removal
+1,  7.00,  70.0,      30.0,    1.00,  30.0, ..., 4.12
+2,  2.00,  70.0,     180.0,    0.10,  25.0, ..., 1.45
+3,  4.50,   2.0,     105.0,    0.55,  35.0, ..., 3.56
+... (500 rows)
+\end{verbatim}
+
+\textbf{2. langmuir\_predictions.csv (Model Output)}
+\begin{verbatim}
+Run, pH, C0_mgL, ..., q_removal, q_predicted, residual
+1,  7.00,  70.0, ...,      4.12,        3.47,     0.65
+2,  2.00,  70.0, ...,      1.45,        1.97,    -0.52
+... (500 rows)
+\end{verbatim}
